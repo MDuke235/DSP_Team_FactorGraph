@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# MATLAB
+*.asv
+slprj/
+*.slxc
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local secrets and environment files
+.env
+*.pem
+*.key
+
+# Temporary outputs
+tmp/
+temp/
+*.tmp
+
+
+# Generated data and results (reproducible with run_all; share challenge data via Drive)
+data/**/*.mat
+artifacts/**/*.mat

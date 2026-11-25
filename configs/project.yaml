@@ -1,0 +1,25 @@
+project:
+  name: "DSP Challenge - Project 5: Factor-Graph INS/GPS Fusion"
+  group_id: "Team-XX"
+  topic: "Factor-graph fusion of IMU (100 Hz) and GPS (1 Hz) for UAV trajectory estimation"
+  interface_version: "0.1.0"
+
+runtime:
+  language: "MATLAB (R2019b+, base MATLAB only for the baseline)"
+  entrypoint: "run_algorithm.m"
+  command: "matlab -batch \"est = run_algorithm('data/baseline/baseline_seed42.mat');\""
+  max_runtime_seconds: 120
+
+data:
+  sampling_rate_hz:
+    imu: 100
+    gps: 1
+  units: "SI: m, s, rad, m/s, m/s^2, rad/s; local ENU frame (planar)"
+  baseline_generator_command: "matlab -batch \"setup_paths; generate_baseline(baseline_config(), 'data/baseline/baseline_seed42.mat');\""
+  advanced_generator_command: "TODO (Phase 2)"
+
+evaluation:
+  command: "matlab -batch \"run_all\""
+  primary_metric: "rmse_pos (horizontal position RMSE over all GPS epochs, metres)"
+  secondary_metrics: ["rmse_pos_outage", "max_err_outage", "final_err", "rmse_yaw_deg", "bias_err"]
+  higher_is_better: false
